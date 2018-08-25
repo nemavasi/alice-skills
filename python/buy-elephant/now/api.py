@@ -57,23 +57,20 @@ def handle_dialog(req, res):
             ]
         }
 
-        res['response']['text'] = 'Привет! Купи слона!'
+        res['response']['text'] = 'Кролик'
         res['response']['buttons'] = get_suggests(user_id)
         return
 
     # Обрабатываем ответ пользователя.
     if req['request']['original_utterance'].lower() in [
-        'ладно',
-        'куплю',
-        'покупаю',
-        'хорошо',
+        'куникло',
     ]:
         # Пользователь согласился, прощаемся.
-        res['response']['text'] = 'Слона можно найти на Яндекс.Маркете!'
+        res['response']['text'] = 'Молодец!'
         return
 
     # Если нет, то убеждаем его купить слона!
-    res['response']['text'] = 'Все говорят "%s", а ты купи слона!' % (
+    res['response']['text'] = 'Все говорят "%s", а ты скажи кролик!' % (
         req['request']['original_utterance']
     )
     res['response']['buttons'] = get_suggests(user_id)
